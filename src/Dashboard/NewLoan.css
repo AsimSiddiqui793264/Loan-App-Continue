@@ -1,0 +1,46 @@
+/* NewLoan.css */
+.stepper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-bottom: 2px solid #eee;
+  }
+  
+  .step {
+    text-align: center;
+    flex: 1;
+    padding: 10px 0;
+    position: relative;
+  }
+  
+  .step-number {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    color: white;
+    line-height: 30px;
+    font-weight: bold;
+  }
+  
+  .step.active .step-number {
+    background-color: #0d6efd;
+  }
+  
+  .step-label {
+    font-size: 13px;
+    color: #666;
+  }
+  
+  .step.active .step-label {
+    font-weight: 500;
+    color: #0d6efd;
+  }
+  
+  @media (max-width: 576px) {
+    .step-label {
+      font-size: 11px;
+    }
+  }
+  

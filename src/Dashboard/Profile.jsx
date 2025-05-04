@@ -1,9 +1,10 @@
 import React from 'react'
+import Sidebar from './Sidebar'
 
 function Profile() {
   return (
     <div>
-      <h1>Profile</h1>
+      <Sidebar/>
     </div>
   )
 }
