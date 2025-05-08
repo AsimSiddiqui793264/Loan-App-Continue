@@ -32,6 +32,31 @@ export default function LoanRequest() {
     fetchData();
   }, []);
 
+  const updateStatus = async (id, newStatus) => {
+    if (newStatus === "Rejected") {
+      const { error } = await supabase
+        .from("NewLoan")
+        .delete()
+        .eq('id', id)
+
+      if (error) {
+        console.log("Error deleting reject loan is " + error.message);
+      } else {
+        setLoanDatas((prev) => prev.filter((loan) => loan.id !== id))
+      }
+
+    } else {
+      const { error } = await supabase
+        .from("NewLoan")
+        .update({ Status: newStatus })
+        .eq('id', id)
+      if (error) {
+        console.log("Error updating : " + error.message);
+      } else {
+        setLoanDatas((prev) => prev.map((loan) => loan.id === id ? { ...loan, Status: newStatus } : loan))
+      }
+    }
+  }
 
   return (
     <>
@@ -55,9 +80,9 @@ export default function LoanRequest() {
         {/* Main Content */}
         <div className="flex-grow-1 p-3">
           <div className="d-flex justify-content-between align-items-center mb-3 flex-wrap">
-            <h3 className="mb-2">My Loan Requests</h3>
-          
-            <Link to="/newloan"><button className="btn btn-primary">New Loan Request</button></Link>
+            <h3 className="mb-2 text-success">My Loan Requests</h3>
+
+            <Link to="/newloan"><button className="btn btn-success">New Loan Request</button></Link>
           </div>
 
           {/* <input
@@ -70,14 +95,14 @@ export default function LoanRequest() {
             <table className="table table-bordered table-hover">
               <thead className="table-light">
                 <tr>
-                  <th>Request ID</th>
-                  <th>Request Date</th>
-                  <th>Loan Package</th>
-                  <th>Pay Frequency</th>
-                  <th>Reference</th>
-                  <th>Next Pay Date</th>
-                  <th>Status</th>
-                  <th>Actions</th>
+                  <th className="text-success">Request ID</th>
+                  <th className="text-success">Request Date</th>
+                  <th className="text-success">Loan Package</th>
+                  <th className="text-success">Pay Frequency</th>
+                  <th className="text-success">Reference</th>
+                  <th className="text-success">Next Pay Date</th>
+                  <th className="text-success">Status</th>
+                  <th className="text-success">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -98,13 +123,50 @@ export default function LoanRequest() {
                       <td>{loan.Pay_Frequency}</td>
                       <td>{loan.Reference}</td>
                       <td>{loan.Next_Pay_Date}</td>
+                  
+
                       <td>
-                        <span className={`badge ${loan.Status === "Pending" ? "bg-warning text-dark" : "bg-info"}`}>
-                          {loan.Status || "Pending"}
+                        <span className={`badge ${loan.Status === "Pending"
+                          ? "bg-warning text-dark"
+                          : loan.Status === "Reviewing Documents"
+                            ? "bg-primary"
+                            : loan.Status === "Accepted"
+                              ? "bg-success"
+                              : loan.Status === "Rejected"
+                                ? "bg-danger"
+                                : "bg-secondary"
+                          }`}>
+                          {loan.Status}
                         </span>
                       </td>
+
                       <td>
-                        <button className="btn btn-sm btn-light">⋮</button>
+                        {loan.Status === "Pending" && (
+                          <>
+                            <button
+                              className="btn btn-sm btn-outline-primary me-1"
+                              onClick={() => updateStatus(loan.id, "Reviewing Documents")}
+                            >
+                               <i className="fas fa-file-alt"></i>
+                            </button>
+                            <button
+                              className="btn btn-sm btn-outline-success me-1"
+                              onClick={() => updateStatus(loan.id, "Accepted")}
+                            >
+                           <i className="fas fa-check"></i>
+                            </button>
+                            <button
+                              className="btn btn-sm btn-outline-danger"
+                              onClick={() => updateStatus(loan.id, "Rejected")}
+                            >
+                             <i className="fas fa-times"></i>
+                            </button>
+                          </>
+                        )}
+
+                        {loan.Status !== "Pending" && (
+                          <span className="text-muted">No actions available</span>
+                        )}
                       </td>
                     </tr>
                   ))
@@ -127,9 +189,9 @@ export default function LoanRequest() {
                 </li>
               </ul>
             </nav>
-          </div>
+          </div> */}
 
-          <small className="text-muted mt-2 d-block">
+          {/* <small className="text-muted mt-2 d-block">
             Note: You can view the details of each loan request by clicking on the action menu.
           </small> */}
         </div>

@@ -22,7 +22,14 @@ export default function NewLoan() {
 const {register , reset , handleSubmit, formState : {errors , isSubmitting}} = useForm({mode : "all"})
 
 const formSubmit = async (data) =>{
-console.log(data);
+if (data) {
+  console.log(data);
+  Swal.fire({
+    title: "Form Submit",
+    text: "Your form Submit Successfully",
+    icon: "success"
+  });
+}
 
 try {
   const { error } = await supabase

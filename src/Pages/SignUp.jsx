@@ -24,11 +24,26 @@ function SignUp() {
       if (error) throw error
 
       if (data) {
-        console.log(data);
-        navigate("/login")
+        setTimeout(() => {
+          Swal.fire({
+            title: "Sign Up",
+            text: "Check your email for confirmation",
+            icon: "success",
+            confirmButtonText : "OK"
+          }).then((result) =>{
+        if (result.isConfirmed) {
+          navigate("/login")
+        }
+          })
+        });
       }
 
     } catch (error) {
+      Swal.fire({
+        title: "Sign Up Error",
+        text: error.message,
+        icon: "error"
+      });
       console.log("SignUp error is : " + error.message);
     }
 
@@ -63,7 +78,7 @@ function SignUp() {
 
         <div>
           <Form className="p-4 border border-black" style={{ width: "400px", marginTop: "70px" }} onSubmit={handleSubmit(formSubmit)}>
-            <h2 className="text-center text-primary mb-4">Create your Account</h2>
+            <h2 className="text-center text-success mb-4">Create your Account</h2>
 
             <Form.Group className="mb-3" controlId="formName">
               <Form.Label>Name</Form.Label>
@@ -119,11 +134,11 @@ function SignUp() {
               {errors.password && <p className='text-danger'>{errors.password.message}</p>}
             </Form.Group>
 
-            <button className="btn btn-primary w-100" type="submit" disabled={isSubmitting} style={{ cursor: isSubmitting ? 'not-allowed' : 'pointer' }} >
+            <button className="btn btn-success w-100" type="submit" disabled={isSubmitting} style={{ cursor: isSubmitting ? 'not-allowed' : 'pointer' }} >
               {isSubmitting ? "Submitting" : "Sign Up"}
             </button><br />
-            <Link to="/home" ><button className='btn btn-primary w-100 mt-3'>Back to Home</button></Link>
-            <p className='text-center'>if you have already acccount <Link to="/login"> Login</Link></p>
+            <Link to="/home" ><button className='btn btn-success w-100 mt-3'>Back to Home</button></Link>
+            <p className='text-center'>if you have already acccount <Link to="/login" className='text-success text-bold'> Login</Link></p>
           </Form>
         </div>
       </div>
