@@ -121,33 +121,7 @@ export default function Dashboard() {
           <p className="text-muted mb-5">Thank you for using our Platform . Here's an overview of your account.</p>
 
 
-          {/* <div className="row mb-4">
-            <div className="col-md-6 col-lg-3 mb-3">
-              <div className="card text-center shadow-sm">
-                <div className="card-body">
-                  <h5 className="card-title">Active Loans</h5>
-                  <h3>{activeLoans}</h3>
-                  <p className="text-success mb-0">{activeLoans > 0 ? "Good Standing" : "No Active Loans"}</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-3 mb-3">
-              <div className="card text-center shadow-sm">
-                <div className="card-body">
-                  <h5 className="card-title">Pending Loans</h5>
-                  <h3>{pendingLoans}</h3>
-                  <p className="text-warning mb-0">{pendingLoans > 0 ? "Review In Progress" : "None Pending"}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center mt-5">
-            <p>No recent activity to display.</p>
-            <Link to="/newLoan"><button className="btn btn-primary">Apply for a New Loan</button></Link>
-          </div> */}
-
-
+    
           <div className="row mb-4">
             {/* Active Loans */}
             <div className="col-md-6 col-lg-3 mb-3">

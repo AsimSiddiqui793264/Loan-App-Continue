@@ -1,8 +1,10 @@
 /* Dashboard.css */
 
 .dashboard-container {
-    position: relative;
-  }
+  display: flex;
+  min-height: 100vh; /* Ensures it covers full screen, and sidebar stretches with content */
+}
+
   
   .sidebar-wrapper {
     width: 250px;
