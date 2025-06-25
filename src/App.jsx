@@ -7,11 +7,9 @@ function App() {
 
   return (
     <>
-    
     <Navbar/>
     <FirstPage/>
     <Footer/>
-
     </>
   )
 }
