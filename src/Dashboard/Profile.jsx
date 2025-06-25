@@ -111,7 +111,7 @@ export default function Profile() {
         <div className="flex-grow-1 p-4">
           <div className="d-flex justify-content-between">
             <div>
-              <h1 className="text-primary text-bold">Customer Profile</h1>
+              <h1 className="text-success text-bold">Customer Profile</h1>
               <small className="text-muted mb-5 d-block">Personal details and infromation</small>
             </div>
             <div> <button className="btn btn-danger" onClick={logOut}>Log Out</button></div>

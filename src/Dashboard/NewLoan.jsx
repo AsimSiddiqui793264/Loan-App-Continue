@@ -276,7 +276,6 @@ export default function NewLoan() {
                 <button className="btn btn-success ms-auto" type="submit">Submit</button>
               )}
 
-
             </div>
           </div>
         </div>
