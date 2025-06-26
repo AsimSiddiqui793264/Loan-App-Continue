@@ -1,12 +1,11 @@
-import React from 'react'
-
+import "./firstPage.css";
 function FirstPage() {
   return (
     <div style={{marginBottom : "19.5%"}}>
-      <h1 className='text-success text-center' style={{marginTop : "15%" , fontSize : "50px"}} >Welcome to Our Paltform</h1>
-      <p className='text-center'>Experience the best service with our cutting-edge  <br /> solutions</p>
+      <h1 className='heading text-success text-center'  >Welcome to Our Paltform</h1>
+      <p className='text-center desc'>Experience the best service with our cutting-edge  <br /> solutions</p>
     </div>
-  )
+  ) 
 }
 
 export default FirstPage

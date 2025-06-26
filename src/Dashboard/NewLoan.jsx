@@ -5,6 +5,7 @@ import "./NewLoan.css";
 import { useForm } from "react-hook-form";
 import { supabase } from "../Pages/Authentication";
 import Button from "react-bootstrap/Button";
+import Footer from "../components/Footer";
 // import Button from "react-bootstrap/Button";
 
 
@@ -280,6 +281,7 @@ export default function NewLoan() {
           </div>
         </div>
       </form>
+      <Footer/>
     </>
   );
 }

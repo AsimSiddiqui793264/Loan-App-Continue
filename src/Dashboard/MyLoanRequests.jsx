@@ -3,6 +3,7 @@ import Sidebar from "./Sidebar";
 import "./Dashboard.css";
 import { supabase } from "../Pages/Authentication";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 
 export default function LoanRequest() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -174,6 +175,7 @@ export default function LoanRequest() {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

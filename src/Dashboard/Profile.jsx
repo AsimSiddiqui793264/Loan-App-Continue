@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { supabase } from "../Pages/Authentication";
 import Sidebar from "./Sidebar";
 import "./Dashboard.css";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 
 export default function Profile() {
   const [userData, setUserData] = useState(null);
@@ -146,6 +147,7 @@ export default function Profile() {
           )}
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

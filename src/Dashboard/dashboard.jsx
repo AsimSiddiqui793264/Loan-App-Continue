@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import "./Dashboard.css";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { supabase } from "../Pages/Authentication";
+import Footer from "../components/Footer";
 
 export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -178,6 +179,7 @@ export default function Dashboard() {
 
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

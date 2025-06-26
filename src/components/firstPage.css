@@ -1,0 +1,19 @@
+
+.heading{
+    /* margin-Top : "15%";  */
+     /* font-size : "50px"
+     font-size  */
+     margin-top: 15%;
+     font-size : 50px
+}
+
+@media  only screen and (max-width : 430px) {
+    .heading{
+        font-size: 60px;
+        padding: 0 30px;
+        margin-top: 70%;
+    }
+    .desc{
+        margin-bottom: 89%;
+    }
+}
